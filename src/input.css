@@ -1,0 +1,45 @@
+@import 'tailwindcss';
+@plugin "daisyui";
+
+/* Custom Color And Font */
+@theme {
+  /* Primary Colors  */
+  --color-primaryColor: ;
+  --color-primaryLight: ;
+
+  /* Text Color  */
+  --color-headingColor: ;
+  --color-paragraphColor: ;
+
+  /* Dark Color */
+  --color-dark1Color: ;
+  --color-dark2Color: ;
+  --color-dark3Color: ;
+  --color-dark4Color: ;
+  --color-dark5Color: ;
+
+  /* Shadow  */
+  --color-shadowSm: ;
+
+  /* Custom Font */
+  --font-primaryFont: 'Poppins', sans-serif;
+  --font-banglaFont: 'Hind Siliguri', sans-serif;
+}
+
+/* Custom Class And Id */
+@layer utilities {
+  body {
+    font-family: var(--font-primaryFont);
+  }
+  p {
+    font-size: 14px;
+  }
+
+  /* Custom Container */
+  .containers {
+    @apply max-w-[1440px] mx-auto px-2 py-2;
+  }
+  .paddingXl {
+    @apply py-4 px-2 sm:py-5 lg:py-8;
+  }
+}
