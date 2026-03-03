@@ -47,4 +47,8 @@
   .paddingXl {
     @apply py-10 px-1 sm:py-5 lg:py-14;
   }
+
+  .paddingXLX {
+    padding: 80px;
+  }
 }
