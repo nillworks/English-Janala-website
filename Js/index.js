@@ -79,16 +79,18 @@ const displayLevelWord = data => {
               <!-- Card Details -->
 
               <div class="space-y-3">
-                <h2 class="text-2xl font-semibold">${dataItem.word}</h2>
-                <p class="font-medium text-lg">${dataItem.meaning}</p>
-                <p class="font-banglaFont font-semibold text-2xl text-[#18181B]">"${dataItem.meaning}/${
+                <h2 class="text-2xl font-semibold">${dataItem.word ? dataItem.word : 'শব্দ পাওয়া যায়নি'}</h2>
+                <p class="font-medium text-lg">${dataItem.meaning ? dataItem.meaning : 'অর্থ পাওয়া যায়নি'}</p>
+                <p class="font-banglaFont font-semibold text-2xl text-[#18181B]">"${dataItem.meaning ? dataItem.meaning : 'Pronunciation পাওয়া যায়নি'}/${
                   dataItem.pronunciation
+                    ? dataItem.pronunciation
+                    : 'Pronunciation পাওয়া যায়নি'
                 }"</p>
               </div>
 
               <!-- icons 2 -->
               <div class="flex items-center justify-around">
-                <button onclick="" class="cursor-pointer">
+                <button onclick="loadWordDetail(${dataItem.id})" class="cursor-pointer">
                   <div class="p-2 rounded-lg bg-[#1A91FF]/10">
                     <img src="assets/icons/i.png" alt="icons">
                   </div>
@@ -105,6 +107,59 @@ const displayLevelWord = data => {
 
     cardContainer.appendChild(itemDiv);
 
-    console.log(dataItem);
+    // console.log(dataItem);
   });
+};
+
+// Word Details Api Load
+const loadWordDetail = async id => {
+  console.log(id);
+  const url = `https://openapi.programming-hero.com/api/word/${id}`;
+  const res = await fetch(url);
+  const data = await res.json();
+
+  displayLoadedData(data.data);
+};
+
+// Display Loaded Data Word
+const displayLoadedData = data => {
+  const getDetailsBox = document.getElementById('detailsContainerModal');
+  document.getElementById('my_modal').showModal();
+  getDetailsBox.innerHTML = '';
+  console.log(data);
+
+  // Data Renders Word Modal
+  const div = document.createElement('div');
+  div.className = 'space-y-5';
+
+  div.innerHTML = `
+    
+                <div>
+                <h2 class="text-3xl font-semibold">${data?.word} (<span><i class="fa-solid fa-microphone-lines"></i></span>
+                  :${data?.pronunciation})
+                </h2>
+              </div>
+
+              <!-- meaning -->
+              <div class="space-y-1">
+                <h2 class="font-semibold text-lg">Meaning</h2>
+                <h6 class="font-medium">${data?.meaning}</h6>
+              </div>
+
+              <!-- Example -->
+              <div class="space-y-1">
+                <h2 class="text-lg font-semibold">Example</h2>
+                <p>${data?.sentence}</p>
+              </div>
+
+              <!-- সমার্থক শব্দ গুলো  -->
+              <div class="space-x-4">
+                <span class="px-2 py-1 bg-[#EDF7FF] rounded-sm">${data?.synonyms[0]}</span>
+                <span class="px-2 py-1 bg-[#EDF7FF] rounded-sm">${data?.synonyms[1]}</span>
+                <span class="px-2 py-1 bg-[#EDF7FF] rounded-sm">${data?.synonyms[2]}</span>
+              </div>
+    
+    `;
+
+  getDetailsBox.appendChild(div);
 };
