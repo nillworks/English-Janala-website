@@ -49,6 +49,10 @@
   }
 
   .paddingXLX {
-    padding: 80px;
+    padding: 50px 0px;
+  }
+
+  .borders {
+    border: 1px solid #dddd;
   }
 }

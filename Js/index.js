@@ -108,6 +108,3 @@ const displayLevelWord = data => {
     console.log(dataItem);
   });
 };
-
-// Button Click Focus Style Function
-const buttonStyle = () => {};
