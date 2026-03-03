@@ -7,6 +7,7 @@ const loadLessons = function () {
       console.log(data);
     });
 };
+
 loadLessons();
 
 const dataRender = data => {
@@ -31,6 +32,12 @@ const loadLevelButton = id => {
   fetch(url)
     .then(res => res.json())
     .then(data => {
-      console.log(data);
+      displayLevelWord(data.data);
     });
+};
+
+const displayLevelWord = data => {
+  data.forEach(dataItem => {
+    console.log(dataItem.word);
+  });
 };
