@@ -33,6 +33,11 @@
   }
   p {
     font-size: 14px;
+    color: #18181b;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
   }
 
   /* Custom Container */
@@ -40,6 +45,6 @@
     @apply max-w-[1440px] mx-auto px-2;
   }
   .paddingXl {
-    @apply py-4 px-2 sm:py-5 lg:py-8;
+    @apply py-10 px-1 sm:py-5 lg:py-14;
   }
 }
