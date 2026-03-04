@@ -1,5 +1,9 @@
 @import 'tailwindcss';
-@plugin "daisyui";
+@plugin "daisyui" {
+  themes:
+    light --default,
+    dark --prefersdark;
+}
 
 /* Custom Color And Font */
 @theme {
@@ -33,7 +37,7 @@
   }
   p {
     font-size: 14px;
-    color: #18181b;
+    /* color: #18181b; */
   }
   img {
     max-width: 100%;

@@ -96,7 +96,7 @@ const displayLevelWord = data => {
                   </div>
                 </button>
 
-                <button onclick="" class="cursor-pointer">
+                <button onclick="pronounceWord('${dataItem?.word}')" class="cursor-pointer">
                   <div class="p-2 rounded-lg bg-[#1A91FF]/10">
                     <img src="assets/icons/fi-sr-volume.png" alt="icons">
                   </div>
@@ -203,3 +203,10 @@ getSearchButton.addEventListener('click', () => {
 
   console.log(inputValue);
 });
+
+// Sound System
+function pronounceWord(word) {
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = 'en-EN';
+  window.speechSynthesis.speak(utterance);
+}
