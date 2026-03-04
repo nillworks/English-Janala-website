@@ -163,6 +163,34 @@
           </ul>
         </div>
 
+
+        <!-- Loading  -->
+        <section id="LoadingSpinner" class="hidden items-center justify-center flex">
+          <span class="loading loading-ring loading-xl"></span>
+        </section>
+
+        <!-- Search section -->
+        <section class="flex items-center justify-center">
+          <div class="join">
+
+            <!-- Input -->
+            <label class="flex items-center gap-2 px-4 border border-gray-300 rounded-l-lg bg-white 
+           focus-within:border-blue-500 focus-within:ring-0">
+
+              <!-- Input Field -->
+              <input id="inputSearch" type="email" placeholder="Search Vocabularies..."
+                class="py-2 w-full outline-none focus:outline-none focus:ring-0 border-none" required />
+            </label>
+
+            <!-- Button -->
+            <button id="btnSearch" class="btn btn-primary rounded-r-lg">
+              Search
+            </button>
+
+          </div>
+        </section>
+
+
         <!-- No Lesson Select Section -->
         <section id="noLessonSection" class="bg-[#F8F8F8]  py-8 px-2 text-center rounded-2xl space-y-2">
           <p class="text-[#79716B]">আপনি এখনো কোন Lesson Select করেন ন</p>
@@ -196,8 +224,6 @@
 
 
     <!-- Open modal  -->
-    <!-- Open the modal using ID.showModal() method -->
-    <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
     <dialog id="my_modal" class="modal modal-bottom sm:modal-middle">
       <div class="modal-box">
 
@@ -219,6 +245,8 @@
         </div>
       </div>
     </dialog>
+
+
 
 
 

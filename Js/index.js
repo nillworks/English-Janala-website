@@ -9,8 +9,6 @@ const loadLessons = function () {
     });
 };
 
-loadLessons();
-
 // Let's Learn Vocabularies Lesson Button Load
 const dataRender = data => {
   const lessonUlContainer = document.getElementById('lessonUlContainer');
@@ -41,6 +39,8 @@ const loadLevelButton = (id, element) => {
   // clicked button active.
   element.classList.remove('btn-outline');
   element.classList.add('btn-primary');
+
+  spinnerLoading(true);
 
   // Data Load
   const url = `https://openapi.programming-hero.com/api/level/${id}`;
@@ -109,6 +109,8 @@ const displayLevelWord = data => {
 
     // console.log(dataItem);
   });
+
+  spinnerLoading(false);
 };
 
 // Word Details Api Load
@@ -163,3 +165,41 @@ const displayLoadedData = data => {
 
   getDetailsBox.appendChild(div);
 };
+
+// Manage Spinner loading
+const spinnerLoading = status => {
+  if (status === true) {
+    document.getElementById('LoadingSpinner').classList.remove('hidden');
+    document.getElementById('prentContainer').classList.add('hidden');
+  } else {
+    document.getElementById('LoadingSpinner').classList.add('hidden');
+    document.getElementById('prentContainer').classList.remove('hidden');
+  }
+};
+
+loadLessons();
+
+// Search System
+const getSearchButton = document.getElementById('btnSearch');
+getSearchButton.addEventListener('click', () => {
+  const inputValue = document
+    .getElementById('inputSearch')
+    .value.trim()
+    .toLowerCase();
+
+  // all word Api
+  fetch('https://openapi.programming-hero.com/api/words/all')
+    .then(res => res.json())
+    .then(data => {
+      const allWord = data.data;
+
+      // filter Words
+      const filterWords = allWord.filter(words =>
+        words.word.toLowerCase().includes(inputValue),
+      );
+      displayLevelWord(filterWords);
+      console.log(filterWords);
+    });
+
+  console.log(inputValue);
+});
