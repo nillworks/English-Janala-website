@@ -18,7 +18,7 @@ const dataRender = data => {
     const li = document.createElement('li');
 
     li.innerHTML = `
-     <a  onclick="loadLevelButton(${item.level_no} ,this)" class="btn btn-outline btn-primary level-btn">
+     <a  onclick="loadLevelButton(${item.level_no} ,this)" class="btn btn-outline btn-accent level-btn">
      <i class="fa-solid fa-book-open"></i> Lesson - ${item?.level_no}</a>
     
     `;
@@ -38,7 +38,7 @@ const loadLevelButton = (id, element) => {
 
   // clicked button active.
   element.classList.remove('btn-outline');
-  element.classList.add('btn-primary');
+  element.classList.add('btn-accent');
 
   spinnerLoading(true);
 
@@ -198,7 +198,7 @@ getSearchButton.addEventListener('click', () => {
         words.word.toLowerCase().includes(inputValue),
       );
       displayLevelWord(filterWords);
-      console.log(filterWords);
+      // console.log(filterWords);
     });
 
   console.log(inputValue);
